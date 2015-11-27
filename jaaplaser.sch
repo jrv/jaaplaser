@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 6/1/2014 23:12:49
+EESchema Schematic File Version 2  date 11/22/2015 18:08:19
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -38,7 +38,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "Lumunics Efx Laser interface"
-Date "1 jun 2014"
+Date "22 nov 2015"
 Rev "1"
 Comp "LaosLaser.org"
 Comment1 ""
@@ -46,8 +46,16 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 7000 4750 0    60   ~ 0
-Cable to laser Header to DB9-Female (flat cable)
+Text Notes 4200 4400 0    60   ~ 0
+TLP504A
+Text Label 3550 3300 2    60   ~ 0
+MBED_ENABLE
+Wire Wire Line
+	4000 3300 3550 3300
+Wire Wire Line
+	4000 4200 4000 4250
+Wire Wire Line
+	4050 5700 3300 5700
 Wire Notes Line
 	11100 4600 11100 6650
 Wire Notes Line
@@ -66,8 +74,6 @@ Wire Wire Line
 	3600 4650 3050 4650
 Wire Wire Line
 	3050 4650 3050 4400
-Wire Wire Line
-	3550 5700 3300 5700
 Connection ~ 4500 2300
 Wire Wire Line
 	4800 2300 4350 2300
@@ -156,6 +162,92 @@ Wire Wire Line
 	9750 5300 9600 5300
 Wire Wire Line
 	9600 5300 9600 5350
+Wire Wire Line
+	4400 3550 4400 3800
+Wire Wire Line
+	4400 4200 4400 4300
+Wire Wire Line
+	4400 4300 4900 4300
+Wire Wire Line
+	4900 4300 4900 4250
+$Comp
+L R R?
+U 1 1 5651F627
+P 4000 3550
+F 0 "R?" V 4080 3550 50  0000 C CNN
+F 1 "10K" V 4000 3550 50  0000 C CNN
+	1    4000 3550
+	1    0    0    -1  
+$EndComp
+Text Label 4900 4250 0    60   ~ 0
+ENABLE
+$Comp
+L GND #PWR?
+U 1 1 5651F603
+P 4000 4250
+F 0 "#PWR?" H 4000 4250 30  0001 C CNN
+F 1 "GND" H 4000 4180 30  0001 C CNN
+	1    4000 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 5651F5F5
+P 4400 3550
+F 0 "#PWR?" H 4400 3640 20  0001 C CNN
+F 1 "+5V" H 4400 3640 30  0000 C CNN
+	1    4400 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D?
+U 1 1 5651F5E6
+P 4000 4000
+F 0 "D?" H 4000 4100 50  0000 C CNN
+F 1 "LED" H 4000 3900 50  0000 C CNN
+	1    4000 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L OPTO_NPN Q?
+U 1 1 5651F5D6
+P 4300 4000
+F 0 "Q?" H 4450 4050 50  0000 L CNN
+F 1 "OPTO_NPN" H 4450 3900 50  0000 L CNN
+	1    4300 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5651CAA0
+P 4050 6200
+F 0 "#PWR?" H 4050 6200 30  0001 C CNN
+F 1 "GND" H 4050 6130 30  0001 C CNN
+	1    4050 6200
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 5651CA94
+P 4050 5950
+F 0 "R?" V 4130 5950 50  0000 C CNN
+F 1 "10k" V 4050 5950 50  0000 C CNN
+	1    4050 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L NPN Q?
+U 1 1 5651CA28
+P 4150 5500
+F 0 "Q?" H 4150 5350 50  0000 R CNN
+F 1 "NPN" H 4150 5650 50  0000 R CNN
+	1    4150 5500
+	-1   0    0    -1  
+$EndComp
+Text Notes 4600 5350 0    60   ~ 0
+Cable D9 to controller (pin, wire, IC2)\n\n1 GND         green/white (pin 13)\n2 enable      brown/white  (pen 15)\n3 signal       brown (pen 14)\n4 laserstat+ blue (pen 11)\n5 laseron+  orangle  (pen 9)\n6 +5V          green  (pen 16)\n7 NC ?? \n8 laserstat-  blue/white (pin 12)\n9 laseron-   orange/white (pin 10)\n
+Text Notes 7000 4750 0    60   ~ 0
+Cable to laser Header to DB9-Female (flat cable)
 $Comp
 L GND #PWR?
 U 1 1 538B8CFE
@@ -252,7 +344,7 @@ PIN1 is NC\nPIN7 signal is unknown
 Text Notes 1650 6500 0    60   ~ 0
 Feedback signal unknown. \nLaser has 10k pull down
 Text Notes 1600 4850 0    60   ~ 0
-Set enable high to power up laser\nLaser has 2k pull down on input pin
+Set enable high to power up laser\nLaser has 2k pull down on input pin\nenable has 5sec turn-on delay @5V\n
 Text Notes 1550 2850 0    60   ~ 0
 Laser status feedback signal function is unknown\nLaser ON has 120R termination in laser
 Text Notes 1550 1300 0    60   ~ 0
